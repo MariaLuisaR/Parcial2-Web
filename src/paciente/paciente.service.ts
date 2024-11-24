@@ -30,7 +30,7 @@ export class PacienteService {
     async create(paciente: PacienteEntity): Promise<PacienteEntity> {
         if (!paciente.name || paciente.name.length < 3) {
             throw new BusinessLogicException(
-                "The name of the paciente must have exactly three characters",
+                "The name of the paciente must be longer than three characters",
                 BusinessError.BAD_REQUEST,
             );
         }

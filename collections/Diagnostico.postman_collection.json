@@ -1,0 +1,311 @@
+{
+	"info": {
+		"_postman_id": "75936fd1-b87d-40ee-93c7-d2490c4cafd4",
+		"name": "Diagnostico",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "25531286"
+	},
+	"item": [
+		{
+			"name": "Obtener todos los diagnosticos",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/diagnosticos",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"diagnosticos"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Obtener todos los diagnosticos",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/diagnosticos",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"diagnosticos"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json",
+							"description": "",
+							"type": "text"
+						}
+					],
+					"cookie": [],
+					"body": "[{\"id\":1,\"name\":\"diagnostico1\",\"description\":\"According to all known laws of aviation, there is no way a bee should be able to fly\", \"pacientes\":[]},\n{\"id\":2,\"name\":\"diagnostico2\",\"description\":\"According to all known laws of aviation, there is no way a bee should be able to fly\", \"pacientes\":[]},\n{\"id\":3,\"name\":\"diagnostico3\",\"description\":\"According to all known laws of aviation, there is no way a bee should be able to fly\", \"pacientes\":[]}]"
+				}
+			]
+		},
+		{
+			"name": "Obtener un diagnostico",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/diagnostico/{{id_diagnostico}}",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"diagnostico",
+						"{{id_diagnostico}}"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Existente",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/diagnosticos/{{id_diagnostico}}",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"diagnosticos",
+								"{{id_diagnostico}}"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json",
+							"description": "",
+							"type": "text"
+						}
+					],
+					"cookie": [],
+					"body": "{\"id\":1,\"name\":\"diagnostico1\",\"description\":\"According to all known laws of aviation, there is no way a bee should be able to fly\", \"pacientes\":[]}"
+				},
+				{
+					"name": "No existente",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/diagnosticos/-1",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"diagnosticos",
+								"-1"
+							]
+						}
+					},
+					"status": "Not Found",
+					"code": 404,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json",
+							"description": "",
+							"type": "text"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"statusCode\": 404,\n    \"message\": \"The diagnostico with the given id was not found\"\n}"
+				}
+			]
+		},
+		{
+			"name": "Crear un diagnostico",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"id\":1,\"name\":\"diagnostico1\",\"description\":\"According to all known laws of aviation, there is no way a bee should be able to fly\", \"pacientes\":[]}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseUrl}}/diagnosticos",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"diagnosticos"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Crear un diagnostico",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"name\":\"diagnostico1\",\"description\":\"According to all known laws of aviation, there is no way a bee should be able to fly\", \"pacientes\":[]}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/diagnosticos",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"diagnosticos"
+							]
+						}
+					},
+					"status": "Created",
+					"code": 201,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json",
+							"description": "",
+							"type": "text"
+						}
+					],
+					"cookie": [],
+					"body": "{\"id\":1,\"name\":\"diagnostico1\",\"description\":\"According to all known laws of aviation, there is no way a bee should be able to fly\", \"pacientes\":[]}"
+				},
+				{
+					"name": "Descripción muy larga",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"id\":1,\"name\":\"diagnostico1\",\"description\":\"According to all known laws of aviation, there is no way a bee should be able to fly. Its wings are too small to get its fat little body off the ground. The bee, of course, flies anyway because bees don't care what humans think is impossible.\", \"pacientes\":[]}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/diagnosticos",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"diagnosticos"
+							]
+						}
+					},
+					"status": "Precondition Failed",
+					"code": 412,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json",
+							"description": "",
+							"type": "text"
+						}
+					],
+					"cookie": [],
+					"body": "{\r\n    \"statusCode\": 412,\r\n    \"message\": \"The description length must be equal or less than 200 characters\"\r\n}"
+				}
+			]
+		},
+		{
+			"name": "Eliminar un diagnostico",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/diagnosticos/{{id_diagnostico}}",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"diagnosticos",
+						"{{id_diagnostico}}"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Existente",
+					"originalRequest": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/diagnosticos/{{id_diagnostico}}",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"diagnosticos",
+								"{{id_diagnostico}}"
+							]
+						}
+					},
+					"status": "No Content",
+					"code": 204,
+					"_postman_previewlanguage": "Text",
+					"header": [],
+					"cookie": [],
+					"body": ""
+				},
+				{
+					"name": "No existente",
+					"originalRequest": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/diagnosticos/-1",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"diagnosticos",
+								"-1"
+							]
+						}
+					},
+					"status": "Not Found",
+					"code": 404,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json",
+							"description": "",
+							"type": "text"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"statusCode\": 404,\n    \"message\": \"The diagnostico with the given id was not found\"\n}"
+				}
+			]
+		}
+	]
+}

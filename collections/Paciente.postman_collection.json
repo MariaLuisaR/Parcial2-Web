@@ -1,0 +1,311 @@
+{
+	"info": {
+		"_postman_id": "6c98acbd-3f33-4411-8dfe-94b429ef37e4",
+		"name": "Paciente",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "25531286"
+	},
+	"item": [
+		{
+			"name": "Obtener todos los pacientes",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/pacientes",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"pacientes"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Obtener todos los pacientes",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/pacientes",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"pacientes"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json",
+							"description": "",
+							"type": "text"
+						}
+					],
+					"cookie": [],
+					"body": "[{\"id\":1,\"name\":\"paciente1\",\"gender\":\"F\", \"diagnosticos\":[], \"medicos\":[]},\n{\"id\":2,\"name\":\"paciente2\",\"gender\":\"F\", \"diagnosticos\":[], \"medicos\":[]},\n{\"id\":3,\"name\":\"paciente3\",\"gender\":\"F\", \"diagnosticos\":[], \"medicos\":[]}]"
+				}
+			]
+		},
+		{
+			"name": "Obtener un paciente",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/paciente/{{id_paciente}}",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"paciente",
+						"{{id_paciente}}"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Existente",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/pacientes/{{id_paciente}}",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"pacientes",
+								"{{id_paciente}}"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json",
+							"description": "",
+							"type": "text"
+						}
+					],
+					"cookie": [],
+					"body": "{\"id\":1,\"name\":\"paciente1\",\"gender\":\"F\", \"diagnosticos\":[], \"medicos\":[]}"
+				},
+				{
+					"name": "No existente",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/pacientes/-1",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"pacientes",
+								"-1"
+							]
+						}
+					},
+					"status": "Not Found",
+					"code": 404,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json",
+							"description": "",
+							"type": "text"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"statusCode\": 404,\n    \"message\": \"The paciente with the given id was not found\"\n}"
+				}
+			]
+		},
+		{
+			"name": "Crear un paciente",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"name\":\"paciente1\",\"gender\":\"F\", \"diagnosticos\":[], \"medicos\":[]}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseUrl}}/pacientes",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"pacientes"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Crear un paciente",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"name\":\"paciente1\",\"gender\":\"F\", \"diagnosticos\":[], \"medicos\":[]}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/pacientes",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"pacientes"
+							]
+						}
+					},
+					"status": "Created",
+					"code": 201,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json",
+							"description": "",
+							"type": "text"
+						}
+					],
+					"cookie": [],
+					"body": "{\"id\":1,\"name\":\"paciente1\",\"gender\":\"F\", \"diagnosticos\":[], \"medicos\":[]}"
+				},
+				{
+					"name": "Nombre menor a 3 caracteres",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"name\":\"p1\",\"gender\":\"F\", \"diagnosticos\":[], \"medicos\":[]}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/pacientes",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"pacientes"
+							]
+						}
+					},
+					"status": "Bad Request",
+					"code": 400,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json",
+							"description": "",
+							"type": "text"
+						}
+					],
+					"cookie": [],
+					"body": "{\r\n    \"statusCode\": 400,\r\n    \"message\": \"The name of the paciente must be longer than three characters\"\r\n}"
+				}
+			]
+		},
+		{
+			"name": "Eliminar un paciente",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/pacientes/{{id_paciente}}",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"pacientes",
+						"{{id_paciente}}"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Existente",
+					"originalRequest": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/pacientes/{{id_paciente}}",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"pacientes",
+								"{{id_paciente}}"
+							]
+						}
+					},
+					"status": "No Content",
+					"code": 204,
+					"_postman_previewlanguage": "Text",
+					"header": [],
+					"cookie": [],
+					"body": ""
+				},
+				{
+					"name": "No existente",
+					"originalRequest": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/pacientes/-1",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"pacientes",
+								"-1"
+							]
+						}
+					},
+					"status": "Not Found",
+					"code": 404,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json",
+							"description": "",
+							"type": "text"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"statusCode\": 404,\n    \"message\": \"The paciente with the given id was not found\"\n}"
+				}
+			]
+		}
+	]
+}

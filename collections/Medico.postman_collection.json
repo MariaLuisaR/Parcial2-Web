@@ -1,0 +1,335 @@
+{
+	"info": {
+		"_postman_id": "3b290b5e-d8e1-4f23-8a34-c74cdb83ef6d",
+		"name": "Medico",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "25531286"
+	},
+	"item": [
+		{
+			"name": "Obtener todos los medicos",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/medicos",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"medicos"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Obtener todos los medicos",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/medicos",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"medicos"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json",
+							"description": "",
+							"type": "text"
+						}
+					],
+					"cookie": [],
+					"body": "[{\"id\":1,\"name\":\"medico1\",\"specialty\":\"specialty\", \"phone\": \"12345\", \"pacientes\":[]},\n{\"id\":2,\"name\":\"medico2\",\"specialty\":\"specialty\", \"phone\": \"12345\", \"pacientes\":[]},\n{\"id\":3,\"name\":\"medico3\",\"specialty\":\"specialty\", \"phone\": \"12345\", \"pacientes\":[]}]"
+				}
+			]
+		},
+		{
+			"name": "Obtener un medico",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/medicos/{{id_medico}}",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"medicos",
+						"{{id_medico}}"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Existente",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/medicos/{{id_medico}}",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"medicos",
+								"{{id_medico}}"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json",
+							"description": "",
+							"type": "text"
+						}
+					],
+					"cookie": [],
+					"body": "{\"id\": 1, \"name\":\"medico1\",\"specialty\":\"specialty\", \"phone\": \"12345\", \"pacientes\":[]}"
+				},
+				{
+					"name": "No existente",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/medicos/-1",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"medicos",
+								"-1"
+							]
+						}
+					},
+					"status": "Not Found",
+					"code": 404,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json",
+							"description": "",
+							"type": "text"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"statusCode\": 404,\n    \"message\": \"The paciente with the given id was not found\"\n}"
+				}
+			]
+		},
+		{
+			"name": "Crear un medico",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"name\":\"medico1\",\"specialty\":\"specialty\", \"phone\": \"12345\", \"pacientes\":[]}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseUrl}}/medicos",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"medicos"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Crear un medico",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"name\":\"medico1\",\"specialty\":\"specialty\", \"phone\": \"12345\", \"pacientes\":[]}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/medicos",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"medicos"
+							]
+						}
+					},
+					"status": "Created",
+					"code": 201,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json",
+							"description": "",
+							"type": "text"
+						}
+					],
+					"cookie": [],
+					"body": "{\"id\":1,\"name\":\"medico1\",\"specialty\":\"specialty\", \"phone\": \"12345\", \"pacientes\":[]}"
+				},
+				{
+					"name": "Especialidad Vacía",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"name\":\"medico1\",\"specialty\":\"\", \"phone\": \"12345\", \"pacientes\":[]}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/medicos",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"medicos"
+							]
+						}
+					},
+					"status": "Precondition Failed",
+					"code": 412,
+					"_postman_previewlanguage": null,
+					"header": null,
+					"cookie": [],
+					"body": "{\r\n    \"statusCode\": 412,\r\n    \"message\": \"The medico must have a specialty\"\r\n}"
+				},
+				{
+					"name": "Nombre Vacío",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"name\":\"\",\"specialty\":\"specialty1\", \"phone\": \"12345\", \"pacientes\":[]}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/medicos",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"medicos"
+							]
+						}
+					},
+					"status": "Precondition Failed",
+					"code": 412,
+					"_postman_previewlanguage": null,
+					"header": null,
+					"cookie": [],
+					"body": "{\r\n    \"statusCode\": 412,\r\n    \"message\": \"The medico must have a name\"\r\n}"
+				}
+			]
+		},
+		{
+			"name": "Eliminar un medico",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/medicos/{{id_medico}}",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"medicos",
+						"{{id_medico}}"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Existente",
+					"originalRequest": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/medicos/{{id_medico}}",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"medicos",
+								"{{id_medico}}"
+							]
+						}
+					},
+					"status": "No Content",
+					"code": 204,
+					"_postman_previewlanguage": "Text",
+					"header": [],
+					"cookie": [],
+					"body": ""
+				},
+				{
+					"name": "No existente",
+					"originalRequest": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/medicos/-1",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"medicos",
+								"-1"
+							]
+						}
+					},
+					"status": "Not Found",
+					"code": 404,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json",
+							"description": "",
+							"type": "text"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"statusCode\": 404,\n    \"message\": \"The paciente with the given id was not found\"\n}"
+				}
+			]
+		}
+	]
+}

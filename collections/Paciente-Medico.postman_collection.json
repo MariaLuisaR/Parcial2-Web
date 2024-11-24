@@ -1,0 +1,218 @@
+{
+	"info": {
+		"_postman_id": "a42e969f-ec26-48e6-92ac-56efed2921e7",
+		"name": "Paciente-Medico",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "25531286"
+	},
+	"item": [
+		{
+			"name": "Agregar Medico a Paciente",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/pacientes/{{paciente_id}}/medicos/{{medico_id_1}}",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"pacientes",
+						"{{paciente_id}}",
+						"medicos",
+						"{{medico_id_1}}"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Agregar Medico a Paciente",
+					"originalRequest": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n   \"id\": \"d48e0c39-e498-4244-8967-6cb96f7ed50f\",\r\n   \"name\": \"Smithsonian national museum of natural history\",\r\n   \"description\": \"The world's most popular natural history museum is dedicated to understanding the natural world and our place in it. Delve into the fascinating story of our planet, from its fiery beginnings through billions of years of transformation, and explore life on Earth through exhibitions and activities, collection objects and research that happens in the lab and in the field. The museum is larger than 18 football fields and is home to the largest natural history collection in the world.\",\r\n   \"address\": \"10th St. & Constitution Ave. NW, Washington, DC\",\r\n   \"city\": \"Washington DC\",\r\n   \"image\": \"https://www.si.edu/sites/default/files/newsdesk/fact_sheets/nhb2015-02891.jpg\",\r\n   \"artworks\": [\r\n       {\r\n           \"id\": \"b4584528-7a09-4634-80d8-2bc5e28d0cce\",\r\n           \"name\": \"La Femme qui pleure\",\r\n           \"year\": 1837,\r\n           \"description\": \"The Weeping Woman, I is an elaboration of one of the central figures in Picasso's famous mural-size painting Guernica, executed some months earlier.\",\r\n           \"type\": \"Painting\",\r\n           \"mainImage\": \"https://assets.catawiki.nl/assets/2019/3/7/2/f/5/2f5c8a17-0b06-4f26-b4a7-4fa51a430ce1.jpg\"\r\n       }\r\n   ],\r\n   \"exhibitions\": []\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/pacientes/{{paciente_id}}/medicos/{{medico_id_1}}",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"pacientes",
+								"{{paciente_id}}",
+								"medicos",
+								"{{medico_id_1}}"
+							]
+						}
+					},
+					"status": "Created",
+					"code": 201,
+					"_postman_previewlanguage": null,
+					"header": null,
+					"cookie": [],
+					"body": null
+				},
+				{
+					"name": "Agregar más de 5 Medicos",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/pacientes/{{paciente_id}}/medicos/{{medico_id_6}}",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"pacientes",
+								"{{paciente_id}}",
+								"medicos",
+								"{{medico_id_6}}"
+							]
+						}
+					},
+					"status": "Bad Request",
+					"code": 400,
+					"_postman_previewlanguage": null,
+					"header": null,
+					"cookie": [],
+					"body": "{\r\n   \"statusCode\": 400,\r\n   \"message\": \"The paciente cannot have more than 5 medicos\"\r\n}"
+				}
+			]
+		},
+		{
+			"name": "Agregar Medico No Valido a Paciente",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/pacientes/{{paciente_id}}/medicos/00000000-0000-0000-0000-000000000000",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"pacientes",
+						"{{paciente_id}}",
+						"medicos",
+						"00000000-0000-0000-0000-000000000000"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Agregar Medico No Valido a Paciente",
+					"originalRequest": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/pacientes/{{paciente_id}}/medicos/00000000-0000-0000-0000-000000000000",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"pacientes",
+								"{{paciente_id}}",
+								"medicos",
+								"00000000-0000-0000-0000-000000000000"
+							]
+						}
+					},
+					"status": "Not Found",
+					"code": 404,
+					"_postman_previewlanguage": null,
+					"header": null,
+					"cookie": [],
+					"body": "{\r\n   \"statusCode\": 404,\r\n   \"message\": \"The medico with the given id was not found\"\r\n}"
+				}
+			]
+		},
+		{
+			"name": "Agregar Medico a Paciente No Valido",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/pacientes/00000000-0000-0000-0000-000000000000/medicos/{{medico_1}}",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"pacientes",
+						"00000000-0000-0000-0000-000000000000",
+						"medicos",
+						"{{medico_1}}"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Agregar Medico a Paciente No Valido",
+					"originalRequest": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/pacientes/00000000-0000-0000-0000-000000000000/medicos/{{medico_1}}",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"pacientes",
+								"00000000-0000-0000-0000-000000000000",
+								"medicos",
+								"{{medico_1}}"
+							]
+						}
+					},
+					"status": "Not Found",
+					"code": 404,
+					"_postman_previewlanguage": null,
+					"header": null,
+					"cookie": [],
+					"body": "{\r\n   \"statusCode\": 404,\r\n   \"message\": \"The paciente with the given id was not found\"\r\n}"
+				}
+			]
+		}
+	]
+}
